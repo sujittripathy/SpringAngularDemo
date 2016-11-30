@@ -21,7 +21,14 @@ public class ItemController {
 
     @RequestMapping(method = RequestMethod.POST)
     public Item addItem(@RequestBody Item item){
-        return itemRepository.save(item);
+        item.setId(null);
+        return itemRepository.saveAndFlush(item);
+    }
+
+    @RequestMapping(value ="{/id}",method = RequestMethod.PUT)
+    public Item updateItem(@RequestBody Item updateItem,@PathVariable Integer id){
+        updateItem.setId(id);
+        return itemRepository.saveAndFlush(updateItem);
     }
 
     @RequestMapping(value ="{/id}",method = RequestMethod.DELETE)

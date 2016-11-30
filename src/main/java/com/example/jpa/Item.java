@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column
     private boolean checked;
